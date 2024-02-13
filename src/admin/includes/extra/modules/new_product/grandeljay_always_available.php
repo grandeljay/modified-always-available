@@ -9,8 +9,16 @@
 
 namespace Grandeljay\AlwaysAvailable;
 
-if (\rth_is_module_disabled(Constants::MODULE_CATEGORIES_NAME) || \rth_is_module_disabled(Constants::MODULE_PRODUCT_NAME)) {
-    return;
+$required_modules = [
+    Constants::MODULE_CATEGORIES_NAME,
+    Constants::MODULE_PRODUCT_NAME,
+    Constants::MODULE_SHOPPING_CART_NAME,
+];
+
+foreach ($required_modules as $required_module) {
+    if (\rth_is_module_disabled($required_module)) {
+        return;
+    }
 }
 
 if (!isset($_GET['pID'])) {
