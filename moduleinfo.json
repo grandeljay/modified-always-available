@@ -1,0 +1,33 @@
+{
+    "archiveName": "grandeljay/always-available",
+    "description": "Allows you to mark a product as always available and appear as available, regardless of its shipping status.",
+    "developer": "grandeljay",
+    "name": "Always Available",
+    "shortDescription": "Allows you to mark a product as always available and appear as available, regardless of its shipping status.",
+    "developerWebsite": "https://github.com/grandeljay",
+    "website": "https://github.com/grandeljay/modified-always-available",
+    "sourceDir": "src",
+    "version": "auto",
+    "category": "nocategory",
+    "tags": "product status",
+    "price": "free",
+    "modifiedCompatibility": [
+        "2.0.7.2"
+    ],
+    "require": {
+        "composer/autoload": "^1.5.0",
+        "robinthehood/modified-std-module": "^0.12.0",
+        "grandeljay/translator": "^0.3.0"
+    },
+    "php": {
+        "version": "^8.1.0"
+    },
+    "mmlc": {
+        "version": "^1.20.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Grandeljay\\AlwaysAvailable\\": "src-mmlc"
+        }
+    }
+}
