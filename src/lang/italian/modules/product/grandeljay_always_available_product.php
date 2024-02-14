@@ -7,9 +7,11 @@
  * @link    https://github.com/grandeljay/modified-always-available
  */
 
+namespace Grandeljay\AlwaysAvailable;
+
 use Grandeljay\Translator\Translations;
 
-$translations = new Translations(__FILE__);
+$translations = new Translations(__FILE__, Constants::MODULE_PRODUCT_NAME);
 $translations->add('TITLE', 'grandeljay - Sempre disponibile');
 $translations->add('TEXT_TITLE', 'Sempre disponibile');
 
