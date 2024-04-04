@@ -38,23 +38,72 @@ $always_available_data  = $always_available_query ? \xtc_db_fetch_array($always_
 $always_available       = $always_available_data['always_available'] ?? false;
 
 ?>
-<table class="tableInput border0">
-    <thead>
-        <tr>
-            <th colspan="2">Immer verfügbar</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="main">
-                <label class="always-available">
+<div class="clear div_box mrg5" style="margin-top: 20px;">
+    <table class="tableInput border0 always-available">
+        <thead>
+            <tr>
+                <th colspan="2">Immer verfügbar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2">
                     <?php
-                    echo \xtc_draw_checkbox_field('grandeljay_always_available[always_available]', true, $always_available) . ' ' . 'Artikel ist immer verfügbar';
+                    $parameters_product       = \http_build_query(
+                        [
+                            'set'    => 'product',
+                            'module' => \grandeljay_always_available_product::class,
+                        ]
+                    );
+                    $parameters_categories    = \http_build_query(
+                        [
+                            'set'    => 'categories',
+                            'module' => \grandeljay_always_available_categories::class,
+                        ]
+                    );
+                    $parameters_shopping_cart = \http_build_query(
+                        [
+                            'set'    => 'shopping_cart',
+                            'module' => \grandeljay_always_available_shopping_cart::class,
+                        ]
+                    );
+                    $link_product             = \sprintf(
+                        '<a href="%s">[%s]</a>',
+                        \xtc_href_link(\FILENAME_MODULES, $parameters_product),
+                        'product'
+                    );
+                    $link_categories          = \sprintf(
+                        '<a href="%s">[%s]</a>',
+                        \xtc_href_link(\FILENAME_MODULES, $parameters_categories),
+                        'categories'
+                    );
+                    $link_shopping_cart       = \sprintf(
+                        '<a href="%s">[%s]</a>',
+                        \xtc_href_link(\FILENAME_MODULES, $parameters_shopping_cart),
+                        'shopping_cart'
+                    );
+
+                    echo \sprintf(
+                        'Diese Einstellungen kommen vom Modul %s %s %s %s.',
+                        '<em>' . 'Immer verfügbar' . '</em>',
+                        $link_product,
+                        $link_categories,
+                        $link_shopping_cart,
+                    );
                     ?>
-                </label>
-            </td>
-        </tr>
-    </tbody>
-</table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="always-available">
+                        <?php
+                        echo \xtc_draw_checkbox_field('grandeljay_always_available[always_available]', true, $always_available) . ' ' . 'Artikel ist immer verfügbar';
+                        ?>
+                    </label>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <?php
